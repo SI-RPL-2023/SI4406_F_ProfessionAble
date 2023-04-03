@@ -1,5 +1,5 @@
-@extends('navbar.index')
-@section('content')
+@extends('navbar.navLogin')
+@section('navLogin')
     <!DOCTYPE html>
     <html lang="en">
 
@@ -95,7 +95,7 @@
                                 <label class="form-label" for="form3Example4">Password</label>
                                 <input type="password" class="form-control" name="password" placeholder="password">
                             </div>
-                            <button type="submit" class="btn btn-sm btn-block mb-4 text-white w-100">
+                            <button type="submit" class="btn btn-sm btn-block mb-4 text-dark w-100">
                                 Login
                             </button>
                         </form>
