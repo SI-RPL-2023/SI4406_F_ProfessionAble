@@ -32,10 +32,6 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-
-Route::get('/login', [LoginController::class, "login"]);
-
-
 Route::get('/mainHome', function () {
     return view('/mainHome');
 });
