@@ -79,6 +79,19 @@
                 <div class="col-sm-4 offset-sm-6">
                     <h3 class="fs-3 text-center">Masuk</h3>
 
+                    @if (\Session::has('alert'))
+                    <div class="alert alert-danger">
+                        <div>{{ Session::get('alert') }}</div>
+                    </div>
+                @endif
+                @if (\Session::has('alert-success'))
+                    <div class="alert alert-success">
+                        <div>{{ Session::get('alert-success') }}</div>
+                    </div>
+                @endif
+                <form action="{{ url('/postlogin') }}" method="post">
+                    {{ csrf_field() }}
+
                     <div class="mt-3">
                         <p class="mb-0 text-muted">belum punya akun?</p>
                         <div class="btn btn-primary">Buat Akun<span class="fas fa-chevron-right ms-1"></span></div>
