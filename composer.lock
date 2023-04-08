@@ -476,6 +476,7 @@
                 }
             ],
             "time": "2023-01-02T17:26:14+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -556,6 +557,8 @@
             ],
             "abandoned": true,
             "time": "2022-02-23T14:53:22+00:00"
+=======
+>>>>>>> faris
         },
         {
             "name": "fruitcake/php-cors",
