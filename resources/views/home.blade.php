@@ -9,9 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Home Page</title>
         <link rel="stylesheet" href="/css/home.css">
-        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"> --}}
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> --}}
         <style>
             .btn {
                 background-color: #ff6f2d;
