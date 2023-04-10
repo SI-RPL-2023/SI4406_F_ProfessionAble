@@ -50,7 +50,7 @@ Route::get('/mainHome', function () {
 
 Route::post('/postlogin', [LoginController::class, "postlogin"])->name('postlogin');
 
-//ini buat logout
+//ini buat logout dan sudah done
 Route::get('/logout', [LoginController::class, "logout"]);
 
 //hanya untuk admin dan company
