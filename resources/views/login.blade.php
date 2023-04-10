@@ -79,8 +79,9 @@
                 <div class="col-sm-4 offset-sm-6">
                     <h3 class="fs-3 text-center">Masuk</h3>
                     <div class="mt-3">
-                        <p class="mb-0 text-muted">belum punya akun?</p>
-                        <div class="btn btn-primary">Buat Akun<span class="fas fa-chevron-right ms-1"></span></div>
+                        <p>Belum punya akun?<a href="/register"> Register</a></p>
+                        {{-- <p class="mb-0 text-muted">belum punya akun?</p>
+                        <div class="btn btn-primary">Buat Akun<span class="fas fa-chevron-right ms-1"></span></div> --}}
                     </div>
 
                     <div class="d-flex flex-column mx-auto my-4">

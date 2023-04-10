@@ -30,7 +30,7 @@
     <body>
 
         
-        <div data-aos="fade-up">
+        <div data-aos="fade-down">
             <div class="container-fluid mt-2">
                 <div class="row align-items-center mb-4 pb-2">
                     <div class="col-md-8 col-lg-8 col-sm-4">
@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="container mt-5">
+                <div class="container mt-5 mb-5">
 
                     <div class="row align-items-start mb-4 pb-2">
                         <div class="col-md-8">
@@ -146,7 +146,7 @@
         </div>
 
 
-        @include('navbar.footer')
+        @include('layout.footer')
 
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>

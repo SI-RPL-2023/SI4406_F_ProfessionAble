@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PageController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\profileController;
+use App\Http\Controllers\registerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +34,15 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+// Register Start
+
 Route::get('/register', function () {
     return view('/register');
 })->name('register');
+
+Route::post('/register/store', [registerController::class, "register_store"]);
+
+// Register ends here
 
 Route::get('/mainHome', function () {
     return view('/mainHome');
@@ -63,3 +71,5 @@ Route::group(['middleware'=>['auth', 'ceklevel:Company']], function(){
 
     Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
 });
+
+Route::get('profile', [profileController::class, "index"]);

@@ -43,24 +43,12 @@
 
 <body>
 
-    {{-- <nav class="navbar navbar-expand-lg bg-white">
-        <div class="container"> --}}
-    {{-- <div class="col">
-        <div class="jumbotron rounded"
-            style="background-image: url('/foto/head.png');
-                        height: 550px; background-repeat: no-repeat;"> --}}
-
             <main>
                 <div class="container-fluid px-0">
                     <div class="row">
-                        <div class="col mb-5"
-                            style="background-image: url('/foto/head.png');
-                height: 550px; background-size: cover;">
-                            <div class="jumbotron">
-                                <nav class="navbar navbar-expand-lg mt-4 mx-5" style="background-color:transparent">
+                        <div class="col mb-5">
+                                <nav class="navbar navbar-expand-lg mt-4 mx-5">
                                     <div class="container-fluid px-0">
-                                        <a class="navbar-brand" href="#"><img src="/foto/logoApp.png"
-                                                width="120px" alt=""></a>
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
                                             aria-expanded="false" aria-label="Toggle navigation">
@@ -74,10 +62,6 @@
                                                 @elseif (auth()->user()->level == 'Company')
                                                     <a href="">Post Lowongan</a>
                                                 @endif
-                                                {{-- <a class="mx-3" href="#">Features</a> --}}
-
-
-
 
                                                 <div class="dropdown mx-5">
                                                     <a class="dropdown-toggle" href="#" role="button"
@@ -87,19 +71,6 @@
                                                             class="badge rounded-pill badge-notification bg-danger">1</span>
                                                     </a>
 
-                                                    {{-- <ul class="dropdown-menu dropdown-menu-end"
-                                                        aria-labelledby="navbarDropdownMenuLink">
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Some news</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Another news</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                        </li>
-                                                    </ul> --}}
                                                 </div>
 
                                                 @if (Auth::user())
@@ -110,13 +81,12 @@
                                                         ({{ Auth::user()->level }})
                                                     </h5>
                                                 @endif
-                                                {{-- <button class="btn btn-light" onclick="toggleMenu()">Sign In</button> --}}
                                                 <div class="sub-menu-wrap" id="subMenu">
                                                     <div class="sub-menu">
                                                         <div class="user-info">
                                                             <p>{{ Auth::user()->name }}</p>
                                                         </div>
-                                                        <a href="/profile" class="sub-menu-link">
+                                                        <a href="#" class="sub-menu-link">
                                                             <p>Profile</p>
                                                             <span>></span>
                                                         </a>
@@ -129,61 +99,19 @@
                                                 </div>
                                             </div>
                                 </nav>
-                                <div class="container mt-5">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="input-group w-50 mx-auto mt-5">
-                                                <input type="search" class="form-control opacity-50"
-                                                    placeholder="Search" aria-label="Search"
-                                                    aria-describedby="search-addon" />
-                                                <button type="button" class="btn btn-white">search</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-
-
-
-
-
-            <!-- Avatar -->
-            {{-- <div class="dropdown">
-                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
-                            id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown"
-                            aria-expanded="false">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle dropdown-img"  alt="Black and White Portrait of a Man" loading="lazy" />
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                            <li>
-                                <a class="dropdown-item" href="#">My profile</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Settings</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </div> --}}
         </div>
-
-
-        {{-- <div class="button">
-                        <a href="#" class="">Daftar</a>
-                    </div> --}}
-        {{-- <a class="button">Daftar</a> --}}
     </div>
     </div>
     </div>
     </nav>
 
     <div class="container">
-        @yield('homePage')
+        @yield('header')
     </div>
 
 </body>

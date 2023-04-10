@@ -60,7 +60,7 @@
                     {{-- <a class="btn mx-3" href="#" role="button">Daftar</a> --}}
                     {{-- <a class=" p-3 mb-1 bg-dark text-dark mx-3" href=''>Daftar</a> --}}
                     <div class="text-end text-end">
-                        <a href="" class="btn  mx-3 btn-md float-end">Daftar</a>
+                        <a href="/register" class="btn  mx-3 btn-md float-end">Daftar</a>
                     </div>
                 </div>
             </div>

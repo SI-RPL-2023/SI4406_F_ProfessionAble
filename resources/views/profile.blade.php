@@ -1,16 +1,9 @@
-@extends('layout.main')
+@extends('navbar.head')
+@section('header')
 
-@section('content')
 
-{{-- <div class="container">
-    <div class="row text-center">
-        <div class="col">
-            
-        </div>
-    </div>
-</div> --}}
 
-<div class="container my-3">
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-12 col-md-10">
             <div class="card border-light shadow ">
@@ -18,32 +11,36 @@
                     <div class="row text-center">
                         <div class="col">
                             <img src="fotoProfile.jpg" alt="fotoProfile" width="200" class="img-thumbnail rounded-circle">
-                            <h4 class="mt-3 mb-2 fw-bold"> Doni Noerman </h4>
-                            <h6 class="text-secondary">dnoerman@gmail.com</h6>
-                            <h6 class="text-secondary">+62 81213141516</h6>
+                            <h4 class="mt-3 mb-2 fw-bold"> {{ Auth::user()->name }} </h4>
+                            <h6 class="text-secondary">{{ Auth::user()->email }}</h6>
+                            <h6 class="text-secondary pb-3"></h6>
+                            <hr>
                         </div>
                     </div>
-                    <div class="row mt-5 justify-content-center">
-                        <div class="col-6">
-                            {{-- buat gambar progress kiri --}}
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col-6 align-self-end">
+                            <h4 class="fw-bold text-center">Lengkapi Profilmu</h4>
                         </div>
                         <div class="col-6">
                             <div class="row">
                                 <div class="col">
                                     <h5 class="fw-bold">Deskripsi Diri</h5>
+                                    <p>{{ Auth::user()->description }}</p>
                                 </div>
                                 <div class="col-auto mx-3">
                                     <a href=""><img src="iconEdit.png" alt="iconEdit" width="22"></a>
+                                    {{-- {{ url('profile/'.$profile->id.'/edit') }} --}}
                                 </div>
                             </div>
                             <div class="row">
-                                <p>Perkenalkan nama saya Doni Noerman berumur 22 tahun dan berdomisili di Buah Batu, Jawa Barat. Saya tertarik dalam mempelajari hal baru sehingga saya terus mengembangkan diri.</p>
+                                <p class="pb-2"></p>
+                                <hr>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4 justify-content-center">
+                    <div class="row mt-3 justify-content-center">
                         <div class="col">
-                            {{-- buat gambar progress kiri --}}
+                            <img src="progress.png" class="position-relative top-50 start-50 translate-middle" alt="progress" width="200" >
                         </div>
                         <div class="col">
                             <h5 class="fw-bold">Data Diri</h5>
@@ -52,7 +49,7 @@
                                   Nama Lengkap
                                 </div>
                                 <div class="col-6">
-                                  Doni Noerman
+                                    {{ Auth::user()->name }}
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -60,7 +57,7 @@
                                   Jenis Kelamin
                                 </div>
                                 <div class="col-6">
-                                  Laki-Laki
+                                    {{ Auth::user()->gender }}
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -68,35 +65,50 @@
                                   Nomor Telepon
                                 </div>
                                 <div class="col-6">
-                                  +62 81213141516
+                                    {{ Auth::user()->phone_number }}
                                 </div>
                             </div>
-                            <div class="row mt-2">
+                            <div class="row mt-2 pb-2">
                                 <div class="col-6 fw-semibold">
                                   Email
                                 </div>
                                 <div class="col-6">
-                                  dnoerman@gmail.com
+                                    {{ Auth::user()->email }}
                                 </div>
                             </div>
+                            <hr>
                         </div>
                     </div>
-                    <div class="row mt-5 justify-content-center">
+                    <div class="row mt-2 justify-content-center">
                         <div class="col">
                             {{-- buat gambar progress kiri --}}
                         </div>
                         <div class="col">
                             <h5 class="fw-bold">Pendidikan Terakhir</h5>
-                            <p class="fst-italic">Masukkan riwayat pendidikan yang jalani selama ini</p>
+                            <p>{{ Auth::user()->education }}</p>
+                            {{-- @if ($profile->education)
+                                <p class="py-2">- {{ $profile->education }}</p>
+                            @else
+                                <p class="fst-italic py-3">Masukkan riwayat pendidikan yang jalani selama ini</p>
+                            @endif --}}
+                            <hr>
                         </div>
                     </div>
-                    <div class="row mt-4 mb-4 justify-content-center">
+                    <div class="row mt-3 mb-4 justify-content-center">
                         <div class="col">
                             {{-- buat gambar progress kiri --}}
                         </div>
                         <div class="col">
                             <h5 class="fw-bold">Jenis Disabilitas</h5>
-                            <p class="fst-italic">Masukkan jenis disabilitas yang anda alami</p>
+                            <p>{{ Auth::user()->type_disability }}</p>
+                            {{-- @if ($profile->type_disability)
+                                <p class="py-2 d-flex">- {{ $profile->type_disability }}</p> --}}
+                                {{-- @foreach ($profile as $item )
+                                    <p class="py-2">- {{ $item }}</p>
+                                @endforeach --}}
+                            {{-- @else
+                                <p class="fst-italic py-2">Masukkan jenis disabilitas yang anda alami</p>
+                            @endif --}}
                         </div>
                     </div>
                 </div>
@@ -105,4 +117,5 @@
     </div>
 </div>
 
+@include('layout.footer')
 @endsection

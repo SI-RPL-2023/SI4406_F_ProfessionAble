@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Level extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class Level extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('level')->nullable();
+            $table->string('no_hp')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class Level extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            
         });
     }
-}
+};

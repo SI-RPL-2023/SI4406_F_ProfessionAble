@@ -12,9 +12,9 @@ class profileController extends Controller
      */
     public function index()
     {
-        // $profileData = Profile::findOrFail($id);
-
-        return view ('profile');
+        // $profile = Profile::get()->first();
+        // return view ('profile')->with('profile', $profile);
+        return view('profile');
     }
 
     /**
@@ -46,7 +46,8 @@ class profileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Profile::where('id', $id)->first();
+        return view('updateprofile')->with('data', $data);
     }
 
     /**
@@ -54,7 +55,27 @@ class profileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'description' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'phone_number' => 'required',
+            'email' => 'required',
+            'education' => 'required'
+        ]);
+
+        $data = [
+            'description' => $request->description,
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'education' => $request->education,
+            'type_disability' => join(', ', $request->type_disability)
+        ];
+
+        Profile::where('id', $id)->update($data);
+        return redirect()->to('profile');
     }
 
     /**
