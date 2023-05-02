@@ -1,5 +1,7 @@
-@extends('navbar.head')
-@section('header')
+@include('layout.head')
+
+@extends('layout.main')
+@section('content')
 
 
 
@@ -11,9 +13,9 @@
                     <div class="row text-center">
                         <div class="col">
                             <img src="fotoProfile.jpg" alt="fotoProfile" width="200" class="img-thumbnail rounded-circle">
-                            <h4 class="mt-3 mb-2 fw-bold"> {{ Auth::user()->name }} </h4>
-                            <h6 class="text-secondary">{{ Auth::user()->email }}</h6>
-                            <h6 class="text-secondary pb-3"></h6>
+                            <h4 class="mt-3 mb-2 fw-bold"> {{ $profile->name }} </h4>
+                            <h6 class="text-secondary">{{ $profile->email }}</h6>
+                            <h6 class="text-secondary pb-3">{{ $profile->phone_number }}</h6>
                             <hr>
                         </div>
                     </div>
@@ -22,18 +24,16 @@
                             <h4 class="fw-bold text-center">Lengkapi Profilmu</h4>
                         </div>
                         <div class="col-6">
-                            <div class="row">
+                            <div class="row pb-1">
                                 <div class="col">
                                     <h5 class="fw-bold">Deskripsi Diri</h5>
-                                    <p>{{ Auth::user()->description }}</p>
                                 </div>
                                 <div class="col-auto mx-3">
-                                    <a href=""><img src="iconEdit.png" alt="iconEdit" width="22"></a>
-                                    {{-- {{ url('profile/'.$profile->id.'/edit') }} --}}
+                                    <a href="{{ url('profile/'.$profile->id.'/edit') }}"><img src="iconEdit.png" alt="iconEdit" width="22"></a>
                                 </div>
                             </div>
                             <div class="row">
-                                <p class="pb-2"></p>
+                                <p class="pb-2 text-justify">{{ $profile->description }}</p>
                                 <hr>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                   Nama Lengkap
                                 </div>
                                 <div class="col-6">
-                                    {{ Auth::user()->name }}
+                                  {{ $profile->name }}
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -57,7 +57,7 @@
                                   Jenis Kelamin
                                 </div>
                                 <div class="col-6">
-                                    {{ Auth::user()->gender }}
+                                  {{ $profile->gender }}
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -65,7 +65,7 @@
                                   Nomor Telepon
                                 </div>
                                 <div class="col-6">
-                                    {{ Auth::user()->phone_number }}
+                                  {{ $profile->phone_number }}
                                 </div>
                             </div>
                             <div class="row mt-2 pb-2">
@@ -73,7 +73,7 @@
                                   Email
                                 </div>
                                 <div class="col-6">
-                                    {{ Auth::user()->email }}
+                                  {{ $profile->email }}
                                 </div>
                             </div>
                             <hr>
@@ -85,12 +85,11 @@
                         </div>
                         <div class="col">
                             <h5 class="fw-bold">Pendidikan Terakhir</h5>
-                            <p>{{ Auth::user()->education }}</p>
-                            {{-- @if ($profile->education)
+                            @if ($profile->education)
                                 <p class="py-2">- {{ $profile->education }}</p>
                             @else
                                 <p class="fst-italic py-3">Masukkan riwayat pendidikan yang jalani selama ini</p>
-                            @endif --}}
+                            @endif
                             <hr>
                         </div>
                     </div>
@@ -100,20 +99,16 @@
                         </div>
                         <div class="col">
                             <h5 class="fw-bold">Jenis Disabilitas</h5>
-                            <p>{{ Auth::user()->type_disability }}</p>
-                            {{-- @if ($profile->type_disability)
-                                <p class="py-2 d-flex">- {{ $profile->type_disability }}</p> --}}
-                                {{-- @foreach ($profile as $item )
-                                    <p class="py-2">- {{ $item }}</p>
-                                @endforeach --}}
-                            {{-- @else
+                            @if ($profile->type_disability)
+                                <p class="py-2">- {{ $profile->type_disability }}</p>
+                            @else
                                 <p class="fst-italic py-2">Masukkan jenis disabilitas yang anda alami</p>
-                            @endif --}}
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 </div>
 
