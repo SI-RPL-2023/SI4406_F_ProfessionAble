@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\applyController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\jobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +51,6 @@ Route::get('/mainHome', function () {
 });
 
 Route::post('/postlogin', [LoginController::class, "postlogin"])->name('postlogin');
-
-//ini buat logout dan sudah done
 Route::get('/logout', [LoginController::class, "logout"]);
 
 //hanya untuk admin dan company
@@ -71,7 +71,25 @@ Route::group(['middleware'=>['auth', 'ceklevel:Pelamar']], function(){
 
 Route::group(['middleware'=>['auth', 'ceklevel:Company']], function(){
 
-    Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
+Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
 });
 
 Route::get('profile', [profileController::class, "index"]);
+
+Route::get('/home', [jobController::class, "index"]);
+
+Route::get('/company/create', [jobController::class, "createJob_view"]);
+Route::post('/company/create/store', [jobController::class, "createJob_store"]);
+
+
+Route::get('/company/{id}', [jobController::class, "job_detail"]);
+
+// Route::get('/Mapilnas/apply/page', [applyController::class, "viewPage_apply"]);
+Route::get('/view/detail/{id}', [jobController::class, "viewPage_detailApply"]);
+Route::post('/apply/job/', [applyController::class, "apply_store"]);
+Route::post('/apply/page/{id}', [applyController::class, "showApplyPage"]);
+Route::get('/history/historyPage/{id}', [applyController::class, "historyPage"]);
+Route::get('/history/detailHistory/{id}', [applyController::class, "detailHistory"]);
+Route::post('/foto_profil/{id}/foto', [registerController::class, "upload_foto"]);
+// Route::get('/detailJob', [applyController::class, "apply"])->name('file.upload');
+// Route::post('/detailJob', [applyController::class, "applyPost"])->name('file.upload.post');
