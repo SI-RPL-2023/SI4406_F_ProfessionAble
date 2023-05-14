@@ -11,26 +11,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class applyController extends Controller
 {
-    //Tampil halaman apply
-    public function showApplyPage($id)
-    {
-        $apply_page = Job::findOrFail($id);
-        return view('apply.apply', compact(['apply_page']));
-    }
-
-    //Simpan data apply
-    public function apply_store(Request $request)
-    {
-        $apply_lowongan = Apply::create($request->all());
-        if ( $request -> hasFile("file") ) {
-            $request -> file("file")->move("file/", $request->file("file")->getClientOriginalName());
-            $apply_lowongan -> file = $request -> file("file")->getClientOriginalName();
-            $apply_lowongan -> save();
-        }
-
-        return redirect('/home');
-    }
-
     //list
     public function historyPage()
     {
