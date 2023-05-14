@@ -54,23 +54,15 @@
         </div>
     </div>
 
-    <div class="container my-3 mx-auto me-5">
+    <div class="container my-5 mx-auto me-5">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-sm-4 offset-sm-4">
                 <div class="card border-light shadow-sm">
                     <div class="card-body">
-                        <h3 class="mb-4 text-center fw-bold">Buat Akun</h3>
-                        <p>Sudah punya akun? <a href="{{ url('/login') }}">Masuk</a></p>
-                        <form action="" method="POST">
-                        @csrf
-                            <div class="mb-3">
-                                <label for="" class="form-label">Nama Lengkap*</label>
-                                <input type="text" name="name" class="form-control" style="background-color: #fde2d6" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Nomor Handphone*</label>
-                                <input type="text" name="phone_number" class="form-control" style="background-color: #fde2d6" required>
-                            </div>
+                        <h3 class="mb-4 text-center fw-bold">Masuk</h3>
+                        <p>Belum punya akun? <a href="{{ url('/') }}">Buat Akun</a></p>
+                        <form action="{{ url('/postlogin') }}" method="POST">
+                            {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="" class="form-label">Email*</label>
                                 <input type="email" name="email" class="form-control" style="background-color: #fde2d6" required>
@@ -79,9 +71,8 @@
                                 <label for="" class="form-label">Password*</label>
                                 <input type="password" name="password" class="form-control" style="background-color: #fde2d6" required>
                             </div>
-                            <p>Password harus minimal 5 kata.</p> {{-- beneran 5 kata nih, bukan 5 huruf kah?? --}}
                             <div class="d-grid gap-2">
-                                <button class="btn button fw-bold" type="submit">Buat Akun</button>
+                                <button class="btn button fw-bold" type="submit">Masuk</button>
                             </div>
                         </form>
                         <div class="separator my-2">
