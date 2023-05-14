@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pelamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class registerController extends Controller
 {
@@ -12,19 +14,24 @@ class registerController extends Controller
         return view('register');
     }
 
-    public function registerStore(Request $request)
+    public function register_store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|max:255',
-            'phone_number' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:5'
+        Pelamar::create([
+            'name' => $request->name,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
+        // $data = $request->validate([
+        //     'name' => $request->name,
+        //     'no_hp' => $request->no_hp,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password)
+        // ]);
 
         // $data['password'] = bcrypt($data['password']);
 
-        User::create($data);
-
-        return redirect()->route('register');
+        // dd($user);
+        return redirect('/login');
     }
 }

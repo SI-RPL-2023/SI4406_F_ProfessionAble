@@ -1,11 +1,20 @@
 <?php
 
+
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\profileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\jobController;
 use App\Http\Controllers\applyController;
+
+use Illuminate\Routing\RouteGroup;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\profileController;
+use App\Http\Controllers\registerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +39,6 @@ Route::resource('profile', profileController::class);
 Route::get('/home', function () {
     return view('home');
 })->name('home');
-
 
 Route::get('/nambahpekerjaan', function () {
     return view('nambahpekerjaan');
