@@ -1,12 +1,14 @@
 @extends('layout.after')
 @section('homePage')
 
+
 <style>
 .btn {
     background-color: #ff6f2d;
 }
 
 img {
+
     height: 150px;
     width: 100%;
 }
@@ -102,6 +104,7 @@ img {
         <!--end row-->
 
         <div class="row">
+
             @foreach ($list as $key => $value)
             <div class="col-md-3 col-sm-6 item">
                 <div class="card item-card card-block">
@@ -121,6 +124,7 @@ img {
             </div>
             @endforeach
         </div>
+
     </div>
 
     <div class="container mt-5 mb-5">
