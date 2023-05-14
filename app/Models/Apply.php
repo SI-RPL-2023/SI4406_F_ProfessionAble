@@ -10,4 +10,5 @@ class Apply extends Model
     use HasFactory;
     protected $table = "apply";
     protected $guarded = [];
+    
 }
