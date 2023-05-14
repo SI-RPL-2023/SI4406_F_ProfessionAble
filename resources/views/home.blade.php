@@ -1,11 +1,12 @@
 @extends('layout.after')
 @section('homePage')
-<style>
-    .btn {
-        background-color: #ff6f2d;
-    }
 
-    img {
+<style>
+.btn {
+    background-color: #ff6f2d;
+}
+
+img {
     height: 150px;
     width: 100%;
 }
@@ -77,6 +78,7 @@
     transform: scale3d(1, 1, 1);
 }
 </style>
+
 <link rel="stylesheet" href="{{ asset('footer.css') }}">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div data-aos="fade-down">
@@ -100,64 +102,25 @@
         <!--end row-->
 
         <div class="row">
+            @foreach ($list as $key => $value)
             <div class="col-md-3 col-sm-6 item">
                 <div class="card item-card card-block">
-                    <p class="card-title text-end mx-3 mt-3 text-muted">3 hari yang lalu</p>
+                    <p class="card-title text-end mx-3 mt-3 text-muted">{{ $value->posting_date }}</p>
                     <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
-                    <h5 class="item-card-title mt-3 mx-3 ">Sales</h5>
+                    <h5 class="item-card-title mt-3 mx-3 ">{{ $value->name }}</h5>
                     <span class="text-muted d-block mx-3"><i class="fa fa-map-marker"
-                            aria-hidden="true"></i>Bandung</span>
-                    <p class="mx-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
+                            aria-hidden="true"></i>{{ $value->location }}</span>
+                    <p class="mx-3">{{ $value->detail }}</p>
 
+                    @if (auth()->user()->level === 'Pelamar')
                     <div class="mt-3 text-end">
-                        <a href="page-job-detail.html" class="btn  mx-3 btn-sm float-right mb-2 ">View Details</a>
+                        <a href="/view/detail/{{ $value->id }}" class="btn  mx-3 btn-sm float-right mb-2 ">View Details</a>
                     </div>
+                    @endif
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 item">
-                <div class="card item-card card-block">
-                    <p class="card-title text-end mx-3 mt-3 text-right text-muted">3 hari yang lalu</p>
-                    <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
-                    <h5 class="item-card-title mt-3 mx-3 ">Sales</h5>
-                    <span class="text-muted d-block mx-3"><i class="fa fa-map-marker"
-                            aria-hidden="true"></i>Bandung</span>
-                    <p class="mx-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-
-                    <div class="mt-3 text-end">
-                        <a href="page-job-detail.html" class="btn mx-3 btn-sm float-right mb-2">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 item">
-                <div class="card item-card card-block">
-                    <p class="card-title text-end mx-3 mt-3 text-right text-muted">3 hari yang lalu</p>
-                    <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
-                    <h5 class="item-card-title mt-3 mx-3 ">Sales</h5>
-                    <span class="text-muted d-block mx-3"><i class="fa fa-map-marker"
-                            aria-hidden="true"></i>Bandung</span>
-                    <p class="mx-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-
-                    <div class="mt-3 text-end">
-                        <a href="page-job-detail.html" class="btn mx-3  btn-sm float-right mb-2">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 item">
-                <div class="card item-card card-block">
-                    <p class="card-title text-end mx-3 mt-3 text-right text-muted">3 hari yang lalu</p>
-                    <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
-                    <h5 class="item-card-title mt-3 mx-3 ">Sales</h5>
-                    <span class="text-muted d-block mx-3"><i class="fa fa-map-marker"
-                            aria-hidden="true"></i>Bandung</span>
-                    <p class="mx-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-
-                    <div class="mt-3 text-end text-end">
-                        <a href="page-job-detail.html" class="btn mx-3  btn-sm float-right mb-2">View Details</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-
     </div>
 
     <div class="container mt-5 mb-5">
