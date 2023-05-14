@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class jobController extends Controller
 {
+    //list
+    public function index()
+    {
+        $list = Job::all();
+        return view ('/home', compact('list'));
+    }
 
     //delete
     public function destroy($id)

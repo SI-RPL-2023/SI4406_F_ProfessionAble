@@ -34,4 +34,16 @@ class registerController extends Controller
         // dd($user);
         return redirect('/login');
     }
+
+    public function upload_foto(Request $request, $id)
+    {
+        $upload_foto = Pelamar::find($id);
+        if ( $request -> hasFile("foto") ) {
+            $request -> file("foto")->move("foto/", $request->file("foto")->getClientOriginalName());
+            $upload_foto -> foto = $request -> file("foto")->getClientOriginalName();
+            $upload_foto -> save();
+        }
+
+        return redirect('/profile');
+    }
 }

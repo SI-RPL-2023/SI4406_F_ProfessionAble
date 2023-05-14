@@ -1,19 +1,17 @@
 <?php
-
-
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\profileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\jobController;
 use App\Http\Controllers\applyController;
-
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\jobController;
 
 
 /*
