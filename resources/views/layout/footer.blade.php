@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/css/footer.css">
 <footer class="site-footer">
 <!-- Site footer -->
     <div class="container mt-2">
@@ -11,7 +10,7 @@
                 <div class="col-md-3 col-xl-3 ms-4 me-3">
                     <h6>Fitur</h6>
                     <ul class="footer-links">
-                        <li><a href="" class="text-decoration-none">Profil</a></li>
+                        <li><a href="{{ url('profile') }}" class="text-decoration-none">Profil</a></li>
                         <li><a href="" class="text-decoration-none">Lowongan Cocok</a></li>
                         <li><a href="" class="text-decoration-none">Lowongan sesuai minat</a></li>
                         <li><a href="" class="text-decoration-none">Lowongan sesuai aplikasi</a></li>

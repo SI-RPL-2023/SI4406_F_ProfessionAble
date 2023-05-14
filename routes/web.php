@@ -1,5 +1,9 @@
 <?php
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\profileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\registerController;
+use App\Http\Controllers\jobController;
 use App\Http\Controllers\applyController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
@@ -9,87 +13,64 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\jobController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
 
-Route::get('/', function () {
-    return view('mainHome');
-});
+Route::get('/', [registerController::class, 'view']) -> name('register');
+Route::post('/', [registerController::class, 'registerStore']);
 
-Route::get('/pages/perusahaan', function () {
-    return view('/pages/perusahaan');
-});
+Route::get('/login', [LoginController::class, 'index']) -> name('login');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/pages/detailPerusahaan', function () {
-    return view('/pages/detailPerusahaan');
-});
+Route::resource('profile', profileController::class);
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
 
-// Register Start
+Route::get('/nambahpekerjaan', function () {
+    return view('nambahpekerjaan');
+})->name('nambahpekerjaan');
 
-Route::get('/register', function () {
-    return view('/register');
-})->name('register');
+Route::get('/registrasilowongan', function () {
+    return view('registrasilowongan');
+})->name('registrasilowongan');
 
-Route::post('/register/store', [registerController::class, "register_store"]);
+Route::get('/riwayatlamaran', function () {
+    return view('riwayatlamaran');
+})->name('riwayatlamaran');
 
-// Register ends here
+Route::get('/detailriwayat', function () {
+    return view('detailriwayat');
+})->name('detailriwayat');
 
-Route::get('/mainHome', function () {
-    return view('/mainHome');
-});
+Route::get('/detaillowongan', function () {
+    return view('detaillowongan');
+})->name('detaillowongan');
 
-Route::post('/postlogin', [LoginController::class, "postlogin"])->name('postlogin');
-Route::get('/logout', [LoginController::class, "logout"]);
+Route::get('/profileperusahaan', function () {
+    return view('profileperusahaan');
+})->name('profileperusahaan');
 
-//hanya untuk admin dan company
-Route::group(['middleware'=>['auth', 'ceklevel:Admin,Pelamar,Company']], function(){
-    Route::get('/home', function () {
-        return view('home');
-    });
+Route::get('/carilowongan', function () {
+    return view('carilowongan');
+})->name('carilowongan');
 
-    // Route::get('/detailPerusahaan', [PageController::class, "detailPerusahaan"])->name('detailPerusahaan');
-    // Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
-});
-
-
-Route::group(['middleware'=>['auth', 'ceklevel:Pelamar']], function(){
-
-    Route::get('/detailPerusahaan', [PageController::class, "detailPerusahaan"])->name('detailPerusahaan');
-});
-
-Route::group(['middleware'=>['auth', 'ceklevel:Company']], function(){
-
-Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
-});
-
-Route::get('profile', [profileController::class, "index"]);
-
-Route::get('/home', [jobController::class, "index"]);
-
+//tambahan dr lala
 Route::get('/company/create', [jobController::class, "createJob_view"]);
-Route::post('/company/create/store', [jobController::class, "createJob_store"]);
-
-
-Route::get('/company/{id}', [jobController::class, "job_detail"]);
-
-// Route::get('/Mapilnas/apply/page', [applyController::class, "viewPage_apply"]);
+Route::get('/home', [jobController::class, "index"]);
+Route::post('/add/store', [jobController::class, "createJob_store"]);
+Route::get('/detailLowongan', [jobController::class, "job_detail"]);
 Route::get('/view/detail/{id}', [jobController::class, "viewPage_detailApply"]);
+Route::post('/detail/Lowongan/applyPage/{id}', [applyController::class, "showApplyPage"]);
 Route::post('/apply/job/', [applyController::class, "apply_store"]);
-Route::post('/apply/page/{id}', [applyController::class, "showApplyPage"]);
-Route::get('/history/historyPage/{id}', [applyController::class, "historyPage"]);
-Route::get('/history/detailHistory/{id}', [applyController::class, "detailHistory"]);
-Route::post('/foto_profil/{id}/foto', [registerController::class, "upload_foto"]);
-// Route::get('/detailJob', [applyController::class, "apply"])->name('file.upload');
-// Route::post('/detailJob', [applyController::class, "applyPost"])->name('file.upload.post');
