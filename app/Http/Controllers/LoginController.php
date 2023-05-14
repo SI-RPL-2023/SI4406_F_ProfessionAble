@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function postlogin (Request $request){
         //dd($request->all());
-        if (Auth::attempt($request->only('email','password'))){
+        if (Auth::attempt($request->only('email','password', 'phone_number'))){
             return redirect('/home');
         }
         return redirect('login');
