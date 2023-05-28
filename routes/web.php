@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PageController;
-use Illuminate\Routing\RouteGroup;
+use App\Http\Controllers\applyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\profileController;
+use App\Http\Controllers\registerController;
+use App\Http\Controllers\jobController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -11,51 +14,57 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
 
-Route::get('/', function () {
-    return view('mainHome');
-});
+Route::get('/', [registerController::class, 'view']) -> name('register');
+Route::post('/', [registerController::class, 'registerStore']);
 
-Route::get('/pages/perusahaan', function () {
-    return view('/pages/perusahaan');
-});
+Route::get('/login', [LoginController::class, 'index']) -> name('login');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/pages/detailPerusahaan', function () {
-    return view('/pages/detailPerusahaan');
-});
+Route::resource('profile', profileController::class);
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
 
-Route::get('/mainHome', function () {
-    return view('/mainHome');
-});
+Route::get('/nambahpekerjaan', function () {
+    return view('nambahpekerjaan');
+})->name('nambahpekerjaan');
 
-Route::post('/postlogin', [LoginController::class, "postlogin"])->name('postlogin');
-Route::get('/logout', [LoginController::class, "logout"]);
+Route::get('/registrasilowongan', function () {
+    return view('registrasilowongan');
+})->name('registrasilowongan');
 
-//hanya untuk admin dan company
-Route::group(['middleware'=>['auth', 'ceklevel:Admin,Pelamar,Company']], function(){
-    Route::get('/home', function () {
-        return view('home');
-    });
+Route::get('/riwayatlamaran', function () {
+    return view('riwayatlamaran');
+})->name('riwayatlamaran');
 
-    // Route::get('/detailPerusahaan', [PageController::class, "detailPerusahaan"])->name('detailPerusahaan');
-    // Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
-});
+Route::get('/detailriwayat', function () {
+    return view('detailriwayat');
+})->name('detailriwayat');
 
+Route::get('/detaillowongan', function () {
+    return view('detaillowongan');
+})->name('detaillowongan');
 
-Route::group(['middleware'=>['auth', 'ceklevel:Pelamar']], function(){
+Route::get('/profileperusahaan', function () {
+    return view('profileperusahaan');
+})->name('profileperusahaan');
 
-    Route::get('/detailPerusahaan', [PageController::class, "detailPerusahaan"])->name('detailPerusahaan');
-});
+Route::get('/carilowongan', function () {
+    return view('carilowongan');
+})->name('carilowongan');
 
-Route::group(['middleware'=>['auth', 'ceklevel:Company']], function(){
-
-    Route::get('/perusahaan', [PageController::class, "perusahaan"])->name('perusahaan');
-});
+//tambahan dr lala
+Route::get('/company/create', [jobController::class, "createJob_view"]);
+Route::get('/home', [jobController::class, "index"]);
+Route::post('/add/store', [jobController::class, "createJob_store"]);
+Route::get('/detailLowongan', [jobController::class, "job_detail"]);
+Route::get('/view/detail/{id}', [jobController::class, "viewPage_detailApply"]);
+Route::post('/detail/Lowongan/applyPage/{id}', [applyController::class, "showApplyPage"]);
+Route::post('/apply/job/', [applyController::class, "apply_store"]);

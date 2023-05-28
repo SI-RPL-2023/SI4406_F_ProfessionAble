@@ -30,5 +30,18 @@ class applyController extends Controller
 
         return redirect('/home');
     }
+  
+    //list
+    public function historyPage()
+    {
+        $list_history = Apply::all();
+        return view ('history.historyPage', compact('list_history'));
+    }
 
+    //detailHistory
+    public function detailHistory($id)
+    {
+        $detail_history = Apply::findOrFail($id);
+        return view('history.detailHistory', compact(['detail_history']));
+    }
 }
