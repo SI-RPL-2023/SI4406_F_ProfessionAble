@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Job;
+use App\Models\User;
 use App\Models\Apply;
+use App\Models\Pelamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class jobController extends Controller
 {
@@ -12,9 +16,9 @@ class jobController extends Controller
     public function index()
     {
         $list = Job::all();
-        return view ('/home', compact('list'));
+        return view('/home', compact('list'));
     }
-  
+
     //tambah job
     public function createJob_view()
     {
@@ -24,15 +28,24 @@ class jobController extends Controller
     //simpan
     public function createJob_store(Request $request)
     {
+        $request["posting_date"] = Carbon::now();
         $lowongan = new Job;
+        $lowongan->user_id = $request->user_id;
         $lowongan->name = $request->name;
+        $lowongan->nama_perusahaan = $request->nama_perusahaan;
+        $lowongan->foto = $request->foto;
         $lowongan->location = $request->location;
         $lowongan->detail = $request->detail;
-        $lowongan->qualification = $request->qualification;
+        if ($request->has('qualification')) {
+            $lowongan->qualification = $request->qualification;
+        }
+
+        $lowongan->qualification_khusus = $request->qualification_khusus;
         $lowongan->posting_date = $request->posting_date;
         $lowongan->end_date = $request->end_date;
+        $lowongan->type_disability = implode(', ', $request->type_disability);
         $lowongan->save();
-      
+
         return redirect('/home')->with('success', "Data berhasil disimpan");
     }
 
@@ -40,7 +53,7 @@ class jobController extends Controller
     public function job_detail($id)
     {
         $lowongan = Job::find($id);
-        return view ('detaillowongan', compact (['lowongan']));
+        return view('detaillowongan', compact(['lowongan']));
     }
 
     //edit
@@ -64,11 +77,11 @@ class jobController extends Controller
 
         return redirect('company')->with('success', "Data berhasil update");
     }
-  
+
     //delete
     public function destroy($id)
     {
-        $lowongan= Job::find($id);
+        $lowongan = Job::find($id);
         $lowongan->delete();
         return redirect('company')->with('success', "Data berhasil dihapus");
     }
@@ -77,7 +90,17 @@ class jobController extends Controller
     public function viewPage_detailApply($id)
     {
         $apply_job = Job::findOrFail($id);
-        return view('detaillowongan', compact(['apply_job']));
-        // return redirect('/detaillowongan')->with('apply_job',$apply_job);
+        $lowongan_lain = Job::latest()->take(2)->get();
+        $profile_company = User::all();
+        return view('detaillowongan', compact(['apply_job', 'lowongan_lain', 'profile_company']));
     }
+
+    //list cari lowongan
+    public function listSearch(Request $request)
+    {
+        return view('carilowongan', [
+            'lowongan_search' => Job::latest()->filter(request(['search']))->get(),
+        ]);
+    }
+
 }
