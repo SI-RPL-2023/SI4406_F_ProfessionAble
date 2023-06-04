@@ -60,7 +60,11 @@
                         </div>
                         <form action="#" class="my-4">
                             @csrf
+<<<<<<< HEAD
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+=======
+                            <input type="hidden" name="user_id" value="">
+>>>>>>> origin/Yose
                             <div class="mb-3">
                                 <label for="" class="form-label fw-medium">Status</label>
                                 <input type="text" name="status" class="form-control text-secondary" value="Diterima" readonly>
@@ -75,8 +79,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label fw-medium">Alamat Perusahaan</label>
+<<<<<<< HEAD
                                 <textarea name="address_company" class="form-control text-secondary" rows="3" readonly>{{ $detail_history->location }}</textarea>
                             </div>
+=======
+                                <textarea name="address_company" class="form-control text-secondary" rows="3" readonly>
+>>>>>>> origin/Yose
                         </form>
                     </div>
                 </div>
