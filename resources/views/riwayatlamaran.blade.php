@@ -2,6 +2,9 @@
 
 @section('content')
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/Manda
     <div class="container">
         <div class="row justify-content-center my-5">
             <h2 class="fw-bold">Riwayat Lamaran</h2>
@@ -10,6 +13,32 @@
     <div class="container my-5">
         <div class="card">
             @foreach ($list_history as $key => $value)
+<<<<<<< HEAD
+=======
+            <div class="card-header">
+                <div class="container">
+                    <div class="row my-1">
+                        
+                        <div class="col col-lg-2">
+                            <img src="logo-telkom-indonesia.png" alt="logo-telkom-indonesia" width="150">
+                        </div>
+                        <div class="col col-lg-6">
+                            <div class="row my-2 fw-bold fs-5">
+                                {{ $value->name }}
+                            </div>
+                            <div class="row fw-light text-secondary">
+                                Telkom Indonesia (statis)
+                            </div>
+                            </div>
+                            <div class="col my-2 fw-bold">
+                                <i class="fa-solid fa-location-pin"></i>
+                                {{ $value->location }}
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+>>>>>>> origin/Manda
             <div class="card-body">
                 <div class="card-text">
                     <div class="container mx-1">
@@ -108,6 +137,7 @@
 
     @include('layout.footer')
 @endsection
+<<<<<<< HEAD
 =======
 
 <div class="container">
@@ -237,3 +267,5 @@
 @include('layout.footer')
 @endsection
 >>>>>>> d9b4a77630e0c3499d5c6f822c3ab8715a953b29
+=======
+>>>>>>> origin/Manda
