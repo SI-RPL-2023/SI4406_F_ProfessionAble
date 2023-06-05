@@ -61,7 +61,7 @@ php artisan key:generate
 -   Lakukan migrasi database
 
 ```bash
-php artisan migrate:fresh --seed
+php artisan migrate
 ```
 
 -   Jalankan server
