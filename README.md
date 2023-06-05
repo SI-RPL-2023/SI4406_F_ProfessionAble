@@ -1,6 +1,6 @@
 <p align="center"><img src="https://telkomuniversity.ac.id/wp-content/uploads/2019/03/Logo-Telkom-University-png-3430x1174.png" width="370" alt="Logo Telkom University"></p>
 <p align="center"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="500" alt="Laravel Logo"></p>
-<p align="center"><img src="" width="500" alt="ProfessionAble Logo Logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/SI-RPL-2023/SI4406_F_ProfessionAble/main/Screenshot%20logo/logo%20dari%20wa.jpg" width="500" alt="ProfessionAble Logo Logo"></p>
 
 
 # Kelompok F - SI-44-06
