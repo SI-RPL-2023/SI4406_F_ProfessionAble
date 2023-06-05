@@ -49,7 +49,7 @@
                     <div class="jumbotron">
                         <nav class="navbar navbar-expand-lg mt-4 mx-5" style="background-color:transparent">
                             <div class="container-fluid px-0">
-                                <a class="navbar-brand" href="#"><img src="logoApp.png" width="120px" alt=""></a>
+                                <a class="navbar-brand" href="#"><img src="logoApp.png" width="80px" alt="logoApp"></a>
                                 {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
                                     aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
                                                 <a href="/nambahpekerjaan">Post Lowongan</a>
                                             @endif
 
-                                        <div class="dropdown mx-5">
+                                        <div class="dropdown mx-3">
                                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-bell-fill"></i>
                                                 <span class="badge rounded-pill badge-notification"></span>
@@ -73,7 +73,7 @@
 
                                         @if (Auth::user())
                                             <img src="https://ui-avatars.com/api/?background=random&color=fff&name={{ Auth::user()->name }}" alt="" class="userPic" onclick="toggleMenu()">
-                                            <h5 class="my-2 mx-2">{{ Auth::user()->name }} ({{ Auth::user()->level }})</h5>
+                                            <a href="#" onclick="toggleMenu()"><h5 class="my-2 mx-2">{{ Auth::user()->name }} ({{ Auth::user()->level }})</h5></a>
                                         @endif
 
                                         <div class="sub-menu-wrap" id="subMenu">
@@ -95,6 +95,11 @@
                                                 @elseif (auth()->user()->level == "Company")
                                                 <a href="/melihatListPelamar" class="sub-menu-link">
                                                     <p>Daftar Pelamar</p>
+                                                    <span>></span>
+                                                </a>
+                                                @elseif (auth()->user()->level == "Admin")
+                                                <a href="/dashboard" class="sub-menu-link">
+                                                    <p>Dashboard</p>
                                                     <span>></span>
                                                 </a>
                                                 @endif

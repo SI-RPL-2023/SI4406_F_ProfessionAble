@@ -10,18 +10,23 @@
                 <div class="col-md-3 col-xl-3 ms-4 me-3">
                     <h6>Fitur</h6>
                     <ul class="footer-links">
-                        <li><a href="{{ url('profile') }}" class="text-decoration-none">Profil</a></li>
+                        <li><a 
+                            @if (auth()->user()->level == 'Pelamar')
+                                href="/profile"
+                            @elseif (auth()->user()->level == 'Company')
+                                href="/profile"
+                            @endif class="text-decoration-none">Profil</a></li>
                         <li><a href="" class="text-decoration-none">Lowongan Cocok</a></li>
                         <li><a href="" class="text-decoration-none">Lowongan sesuai minat</a></li>
                         <li><a href="" class="text-decoration-none">Lowongan sesuai aplikasi</a></li>
                         <li><a href="" class="text-decoration-none">Pengajuan kerja langsung</a></li>
-                        <li><a href="" class="text-decoration-none">Lamaran dikirim</a></li>
+                        <li><a href="/riwayatlamaran" class="text-decoration-none">Lamaran dikirim</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-xl-3">
                     <h6>Perusahaan</h6>
                     <ul class="footer-links">
-                        <li><a href="" class="text-decoration-none">Tentang</a></li>
+                        <li><a href="/tentang" class="text-decoration-none">Tentang</a></li>
                         <li><a href="" class="text-decoration-none">Media</a></li>
                         <li><a href="" class="text-decoration-none">Mitra</a></li>
                         <li><a href="" class="text-decoration-none">Hubungi Kami</a></li>
@@ -35,12 +40,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-6 col-xs-12">
-                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by
-                        <a href="#">ProffessionAble</a>.
+                    <p class="copyright-text footer-links">Copyright &copy; 2023 All Rights Reserved by
+                        <a href="/home" class="text-decoration-none">ProffessionAble</a>
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <ul class="hubungi-Kami">
+                    <ul class="hubungi-Kami footer-links inline">
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>

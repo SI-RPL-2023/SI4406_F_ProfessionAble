@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Artikel;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/Lala
 use Illuminate\Http\Request;
 
 class artikelController extends Controller
@@ -14,21 +10,13 @@ class artikelController extends Controller
     public function tampil()
     {
         $list_artikel = Artikel::all();
-<<<<<<< HEAD
-        return view('/home', compact('list_artikel'));
-=======
         return view('/admin/artikel', compact('list_artikel'));
->>>>>>> origin/Lala
     }
 
     //tambah artikel
     public function article_view()
     {
-<<<<<<< HEAD
-        return view('#namafile');
-=======
         return view('/admin/tambahArtikel');
->>>>>>> origin/Lala
     }
 
     //simpan
@@ -39,11 +27,6 @@ class artikelController extends Controller
         $artikel->author = $request->author;
         $artikel->posting_date = $request->posting_date;
         $artikel->isi = $request->isi;
-<<<<<<< HEAD
-        $artikel->save();
-
-        return redirect('#fileartikel')->with('success', "Artikel telah diposting");
-=======
         if ($request->file('gambar')) {
             $file = $request->file('gambar');
             $nama_file = $file->getClientOriginalName();
@@ -53,7 +36,6 @@ class artikelController extends Controller
         $artikel->save();
 
         return redirect('/artikel')->with('success', "Artikel telah diposting");
->>>>>>> origin/Lala
     }
 
     public function edit_articleView(string $id)
@@ -84,9 +66,6 @@ class artikelController extends Controller
     {
         $hapus_artikel = Artikel::find($id);
         $hapus_artikel->delete();
-<<<<<<< HEAD
-        return redirect('#home')->with('success', "Artikel berhasil dihapus");
-=======
         return redirect('/artikel')->with('success', "Artikel berhasil dihapus");
     }
 
@@ -96,6 +75,5 @@ class artikelController extends Controller
         return view('/admin/artikel', [
             'tampil_artikel' => Artikel::latest()->filter(request(['search']))->get(),
         ]);
->>>>>>> origin/Lala
     }
 }

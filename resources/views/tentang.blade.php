@@ -34,6 +34,7 @@
 
 @include('layout.afternew')
 
+<div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500">
 <div class="d-flex justify-content-center">
     <img src="kursi_roda.png" alt="kursi_roda" class="atas">
 </div>
@@ -102,6 +103,7 @@
             <a href="/carilowongan"><button class="btn button btn-lg my-3 fw-bold" style="width: 175px" type="button">Selengkapnya</button></a>
         </div>
     </div>
+</div>
 </div>
 
 @include('layout.footer')

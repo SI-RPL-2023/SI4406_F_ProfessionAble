@@ -14,7 +14,7 @@ class registerController extends Controller
         return view('register');
     }
 
-    public function register_store(Request $request)
+    public function registerStore(Request $request)
     {
         Pelamar::create([
             'name' => $request->name,
@@ -22,28 +22,7 @@ class registerController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-        // $data = $request->validate([
-        //     'name' => $request->name,
-        //     'no_hp' => $request->no_hp,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password)
-        // ]);
-
-        // $data['password'] = bcrypt($data['password']);
-
-        // dd($user);
         return redirect('/login');
     }
-
-    public function upload_foto(Request $request, $id)
-    {
-        $upload_foto = Pelamar::find($id);
-        if ( $request -> hasFile("foto") ) {
-            $request -> file("foto")->move("foto/", $request->file("foto")->getClientOriginalName());
-            $upload_foto -> foto = $request -> file("foto")->getClientOriginalName();
-            $upload_foto -> save();
-        }
-
-        return redirect('/profile');
-    }
+    
 }

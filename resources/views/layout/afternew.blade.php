@@ -16,6 +16,7 @@
     }
 </style>
 
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
@@ -58,7 +59,7 @@
                                 @if (auth()->user()->level == "Pelamar")
                                     <li><a class="dropdown-item" href="/riwayatlamaran">Riwayat</a></li>
                                 @elseif (auth()->user()->level == "Company")
-                                    <li><a class="dropdown-item" href="/daftarPelamar">Daftar Pelamar</a></li>
+                                    <li><a class="dropdown-item" href="/melihatListPelamar">Daftar Pelamar</a></li>
                                 @endif
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>

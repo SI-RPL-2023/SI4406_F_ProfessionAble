@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\Job;
+// use App\Models\Profile;
+use App\Models\Pelamar;
 use Illuminate\Http\Request;
 
 class profileController extends Controller
@@ -10,12 +12,12 @@ class profileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function viewProfile()
     {
-        // $profile = Profile::get()->first();
-        // return view ('profile')->with('profile', $profile);
-        return view('profile');
+        $profile = Pelamar::get();
+        return view ('profile')->with('profile', $profile);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -44,38 +46,74 @@ class profileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function editProfile(string $id)
     {
-        $data = Profile::where('id', $id)->first();
+        $data = Pelamar::where('id', $id)->first();
         return view('updateprofile')->with('data', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateProfile(Request $request, string $id)
     {
         $request->validate([
-            'description' => 'required',
             'name' => 'required',
-            'gender' => 'required',
             'phone_number' => 'required',
-            'email' => 'required',
-            'education' => 'required'
+            'email' => 'required', 
         ]);
+        
+        if (isset($request->type_disability)) {
+            $data = [
+                'description' => $request->description,
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'phone_number' => $request->phone_number,
+                'email' => $request->email,
+                'education' => $request->education,
+                'website' => $request->website,
+                'url' => $request->url,
+                'industri' => $request->industri,
+                'ukuran_perusahaan' => $request->ukuran_perusahaan,
+                'jenis_perusahaan' => $request->jenis_perusahaan,
+                'type_disability' => implode(', ', $request->type_disability)
+            ];
+        } else {
+            $data = [
+                'description' => $request->description,
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'phone_number' => $request->phone_number,
+                'email' => $request->email,
+                'education' => $request->education,
+                'website' => $request->website,
+                'url' => $request->url,
+                'industri' => $request->industri,
+                'ukuran_perusahaan' => $request->ukuran_perusahaan,
+                'jenis_perusahaan' => $request->jenis_perusahaan,
+                'type_disability' => ''
+            ];
+        }
 
-        $data = [
-            'description' => $request->description,
-            'name' => $request->name,
-            'gender' => $request->gender,
-            'phone_number' => $request->phone_number,
-            'email' => $request->email,
-            'education' => $request->education,
-            'type_disability' => join(', ', $request->type_disability)
-        ];
+        $upload_foto = Pelamar::find($id);
+        if ( $request -> hasFile("foto") ) {
+            $request -> file("foto")->move("foto/", $request->file("foto")->getClientOriginalName());
+            $upload_foto -> foto = $request -> file("foto")->getClientOriginalName();
+            $upload_foto -> save();
+        }
 
-        Profile::where('id', $id)->update($data);
-        return redirect()->to('profile');
+        $detail = Pelamar::where('id', $id)->update($data);
+
+        return redirect('/profile');
+
+    }
+
+    public function detail_perusahaan($id)
+    {
+        $get_perusahaan = Job::find($id);
+        $profile_perusahaan = $get_perusahaan->user;
+        return view('profileperusahaan', compact('profile_perusahaan'));
+
     }
 
     /**

@@ -26,7 +26,7 @@
 </style>
 
 <div class="d-flex">
-    <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh; background-color: #eb5a16bd;">
+    <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh; background-color: #eb5a16bd;" data-aos="fade-right">
         <div class="text-center">
             <a href="/home" class="mb-3 mb-md-0 me-md-auto">
                 <img src="LogoApp.png" alt="LogoApp" width="150px" height="100px">
@@ -71,28 +71,28 @@
     </div>
     <div class="container mx-5 mt-5">
         <div class="row text-secondary">
-            <div class="col">
+            <div class="col" data-aos="fade-right">
                 <span class="px-2"><i class="fa-solid fa-house"></i></span>
                 Dashboard
             </div>
-            <div class="col text-end mx-4">
+            <div class="col text-end mx-4" data-aos="fade-down">
                 <i class="fa-regular fa-bell"></i>
             </div>
         </div>
         <hr>
         <div class="row mb-2 pt-1">
             <div class="col">
-                <h2 class="fw-bold">Selamat Datang, Admin</h2>
+                <h2 class="fw-bold" data-aos="fade-right">Selamat Datang, Admin</h2>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col">
-                <h5 class="fw-medium text-secondary">Cek perkembangan ProfessionAble hari ini...</h5>
+                <h5 class="fw-medium text-secondary" data-aos="fade-right">Cek perkembangan ProfessionAble hari ini...</h5>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col">
-                <div class="card rounded-4 shadow border-light mb-2" style="width: 18rem; background-color: #cdb5b5;">
+                <div class="card rounded-4 shadow border-light mb-2" style="width: 18rem; background-color: #cdb5b5;" data-aos="flip-up">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h6 class="card-title text-black-50">Perusahaan</h6>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card rounded-4 shadow border-light mb-2" style="width: 18rem; background-color: #babfd0;">
+                <div class="card rounded-4 shadow border-light mb-2" style="width: 18rem; background-color: #babfd0;" data-aos="flip-up">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h6 class="card-title text-black-50">Pengguna</h6>
@@ -142,7 +142,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card rounded-4 shadow border-light mb-2" style="width: 18rem; background-color: #a89c9c;">
+                <div class="card rounded-4 shadow border-light mb-2" style="width: 18rem; background-color: #a89c9c;" data-aos="flip-up">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h6 class="card-title text-black-50">Artikel</h6>

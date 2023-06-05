@@ -8,12 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function index(){
+        return view('login');
+    }
+
     public function postlogin (Request $request){
-        //dd($request->all());
-        if (Auth::attempt($request->only('email','password', 'phone_number'))){
-            return redirect('/home');
-        }
-        return redirect('login');
+        if (Auth::attempt($request->only('email','password'))){
+            if (auth()->user()->level !== 'Admin'){
+                return redirect()->to('home');
+            }else{
+                return redirect()->to('dashboard');
+            }
+        } else {
+            return redirect('login');
+        }   
     }
 
     public function logout (Request $request){

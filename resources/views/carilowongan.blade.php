@@ -30,17 +30,23 @@
     height: auto;
     max-width: 100%;
     }
+    input[type="checkbox"]:checked {
+        background-color: #F47C46;
+        border-color: rgba(244, 124, 70, .5);
+    }
 </style>
 
 @include('layout.afternew')
 
+<div data-aos="fade-down">
 <div class="d-flex justify-content-center">
     <img src="impian.png" alt="impian" class="atas">
+</div>
 </div>
 
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-3 me-3">
+        <div class="col-3 me-3" data-aos="fade-right">
             <div class="card rounded-4">
                 <ul class="list-group list-group-flush rounded-top-4">
                     <li class="list-group-item fw-bold">
@@ -54,7 +60,7 @@
                     <div class="row justify-content-center">
                         <div class="col-11 mt-3">
                             <label class="fw-bold">Tanggal Posting</label>
-                            <select class="form-select mt-2 mb-4 text-secondary">
+                            <select class="form-select mt-2 mb-4 text-secondary shadow-oren">
                                 <option selected>Kapan saja</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -71,19 +77,19 @@
                             <div class="row">
                                 <div class="col-7 mt-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_job[]" value="Admin" id="flexCheckChecked1">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_job[]" value="Admin" id="flexCheckChecked1">
                                         <label class="form-check-label" for="flexCheckChecked1">
                                             Admin
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_job[]" value="UI/UX" id="flexCheckChecked2">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_job[]" value="UI/UX" id="flexCheckChecked2">
                                         <label class="form-check-label" for="flexCheckChecked2">
                                             UI/UX
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_job[]" value="Management" id="flexCheckChecked3">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_job[]" value="Management" id="flexCheckChecked3">
                                         <label class="form-check-label" for="flexCheckChecked3">
                                             Management
                                         </label>
@@ -91,19 +97,19 @@
                                 </div>
                                 <div class="col-5 mt-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_job[]" value="Sales" id="flexCheckChecked4">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_job[]" value="Sales" id="flexCheckChecked4">
                                         <label class="form-check-label" for="flexCheckChecked4">
                                             Sales
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_job[]" value="CS" id="flexCheckChecked5">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_job[]" value="CS" id="flexCheckChecked5">
                                         <label class="form-check-label" for="flexCheckChecked5">
                                             CS
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_job[]" value="Lainnya" id="flexCheckChecked6">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_job[]" value="Lainnya" id="flexCheckChecked6">
                                         <label class="form-check-label" for="flexCheckChecked6">
                                             Lainnya
                                         </label>
@@ -121,25 +127,25 @@
                             <div class="row">
                                 <div class="col mt-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="locations[]" value="Kota Bandung" id="flexCheckChecked7">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="locations[]" value="Kota Bandung" id="flexCheckChecked7">
                                         <label class="form-check-label" for="flexCheckChecked7">
                                             Kota Bandung
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="locations[]" value="Kota Cimahi" id="flexCheckChecked8">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="locations[]" value="Kota Cimahi" id="flexCheckChecked8">
                                         <label class="form-check-label" for="flexCheckChecked8">
                                             Kota Cimahi
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="locations[]" value="Kabupaten Bandung" id="flexCheckChecked9">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="locations[]" value="Kabupaten Bandung" id="flexCheckChecked9">
                                         <label class="form-check-label" for="flexCheckChecked9">
                                             Kabupaten Bandung
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="locations[]" value="Kabupaten Bandung Barat" id="flexCheckChecked10">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="locations[]" value="Kabupaten Bandung Barat" id="flexCheckChecked10">
                                         <label class="form-check-label" for="flexCheckChecked10">
                                             Kabupaten Bandung Barat
                                         </label>
@@ -157,25 +163,25 @@
                             <div class="row">
                                 <div class="col mt-2 mb-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_disability[]" value="Tuna Daksa" id="flexCheckChecked11">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_disability[]" value="Tuna Daksa" id="flexCheckChecked11">
                                         <label class="form-check-label" for="flexCheckChecked11">
                                             Tuna Daksa
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_disability[]" value="Tuna Netra" id="flexCheckChecked12">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_disability[]" value="Tuna Netra" id="flexCheckChecked12">
                                         <label class="form-check-label" for="flexCheckChecked12">
                                             Tuna Netra
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_disability[]" value="Tuna Rungu" id="flexCheckChecked13">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_disability[]" value="Tuna Rungu" id="flexCheckChecked13">
                                         <label class="form-check-label" for="flexCheckChecked13">
                                             Tuna Rungu
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type_disability[]" value="Tuna Wicara" id="flexCheckChecked14">
+                                        <input class="form-check-input shadow-oren" type="checkbox" name="type_disability[]" value="Tuna Wicara" id="flexCheckChecked14">
                                         <label class="form-check-label" for="flexCheckChecked14">
                                             Tuna Wicara
                                         </label>
@@ -187,7 +193,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col" data-aos="fade-left">
             <form action="{{ route('carilowongan') }}" method="GET">
                 @csrf
                 <div class="row">
@@ -237,11 +243,15 @@
                                                     </div>
                                                 </div>
                                                 <hr>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="card-text mx-2 mt-1" style="text-align: justify;">
+                                                            {!! $tampil->detail !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="card-text">
-                                                {!! $tampil->detail !!}
-                                            </div>
-                                            <div class="mx-4">
+                                            <div class="mx-3">
                                                 <a href="/view/detail/{{ $tampil->id }}" class="text-reset">Selengkapnya</a>
                                             </div>
                                         </div>
@@ -253,6 +263,7 @@
         </div>
     </div>
 </div>
+
 
 @include('layout.footer')
 @endsection

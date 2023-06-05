@@ -40,6 +40,11 @@
         border: 0;
         background-color: #000000;
     }
+    
+    .shadow-oren:focus {
+        box-shadow: 0 0 0 .25rem rgba(244, 124, 70, .25);
+        border-color: rgba(244, 124, 70, .5);
+    }
 </style>
 
 @include('layout.navbar')
@@ -65,11 +70,11 @@
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="" class="form-label">Email*</label>
-                                <input type="email" name="email" class="form-control" style="background-color: #fde2d6" required>
+                                <input type="email" name="email" class="form-control shadow-oren" style="background-color: #fde2d6" required>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Password*</label>
-                                <input type="password" name="password" class="form-control" style="background-color: #fde2d6" required>
+                                <input type="password" name="password" class="form-control shadow-oren" style="background-color: #fde2d6" required>
                             </div>
                             <div class="d-grid gap-2">
                                 <button class="btn button fw-bold" type="submit">Masuk</button>

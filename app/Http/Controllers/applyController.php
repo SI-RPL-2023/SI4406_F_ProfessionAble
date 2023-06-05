@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Job;
+use App\Models\User;
 use App\Models\Apply;
+use App\Models\Pelamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -21,6 +23,7 @@ class applyController extends Controller
     //Simpan data apply
     public function apply_store(Request $request)
     {
+        $request["apply_date"] = Carbon::now();
         $apply_lowongan = Apply::create($request->all());
         if ( $request -> hasFile("file") ) {
             $request -> file("file")->move("file/", $request->file("file")->getClientOriginalName());
@@ -30,18 +33,22 @@ class applyController extends Controller
 
         return redirect('/home');
     }
-  
+
     //list
     public function historyPage()
     {
-        $list_history = Apply::all();
-        return view ('history.historyPage', compact('list_history'));
+        $job = new Job;
+        $user = auth()->user();
+        $list_history = Apply::where('user_id', $user->id)->latest()->get();
+        $from_company = User::with('jobs')->get();
+        return view ('riwayatlamaran', compact('list_history', 'from_company'));
     }
 
     //detailHistory
     public function detailHistory($id)
     {
         $detail_history = Apply::findOrFail($id);
-        return view('history.detailHistory', compact(['detail_history']));
+        return view('detailriwayat', compact(['detail_history']));
     }
+
 }

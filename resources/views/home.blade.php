@@ -91,14 +91,14 @@
                 </div>
                 <div class="col-md-4 mt-4 mt-sm-0 d-none d-md-block">
                     <div class=" text-md-end">
-                        <a href="" class="text-dark" style="text-decoration: none">Lainnya</a>
+                        <a href="#" class="text-dark" style="text-decoration: none">Lainnya</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 @foreach ($list as $key => $value)
                     <div class="col-md-3 col-sm-6 item">
-                        <div class="card item-card card-block">
+                        <div class="card item-card card-block mx-1 my-3">
                             <p class="card-title text-end mx-3 mt-3 text-muted">{{ $value->created_at->diffForHumans() }}
                             </p>
                             <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
@@ -109,7 +109,6 @@
                             </div>
                             <p class="mx-3">
                                 <?php
-                                
                                 $rincian_detail = $value['detail'];
                                 if (strlen($rincian_detail) > 10) {
                                     $rincian_detail = Str::substr($rincian_detail, 0, 30) . '...';
@@ -136,14 +135,14 @@
                 </div>
                 <div class="col-md-4 mt-4 mt-sm-0 d-none d-md-block">
                     <div class=" text-md-end">
-                        <a href="" class="text-dark" style="text-decoration: none">Lainnya</a>
+                        <a href="#" class="text-dark" style="text-decoration: none">Lainnya</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 @foreach ($list_artikel as $artikel)
                     <div class="col-md-3 col-sm-6 item">
-                        <div class="card item-card card-block">
+                        <div class="card item-card card-block mx-1 my-3">
                             <p class="card-title text-end mx-3 mt-3 text-muted">{{ $artikel->created_at->diffForHumans() }}
                             </p>
                             <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">

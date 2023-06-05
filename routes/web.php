@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\jobController;
 use App\Http\Controllers\applyController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\adminController;
->>>>>>> origin/Manda
+use App\Http\Controllers\artikelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,20 +29,13 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 //Profile
 // Route::resource('profile', profileController::class);
-<<<<<<< HEAD
-Route::get('/profile/{id}/editProfile', [registerController::class, "editProfile"]);
-Route::post('/profile/{id}', [registerController::class, "updateProfile"]);
-Route::get('/profile', [registerController::class, "viewProfile"]);
-=======
 Route::get('/profile/{id}/editProfile', [profileController::class, "editProfile"]);
 Route::post('/profile/update/{id}', [profileController::class, "updateProfile"]);
 Route::get('/profile', [profileController::class, "viewProfile"]);
->>>>>>> origin/Manda
 
 Route::get('/home', function () {
     return view('home');
 })->name('home');
-
 
 Route::get('/nambahpekerjaan', function () {
     return view('nambahpekerjaan');
@@ -54,13 +45,6 @@ Route::get('/registrasilowongan', function () {
     return view('registrasilowongan');
 })->name('registrasilowongan');
 
-<<<<<<< HEAD
-Route::get('/riwayatlamaran', function () {
-    return view('riwayatlamaran');
-})->name('riwayatlamaran');
-=======
->>>>>>> origin/Manda
-
 Route::get('/detailriwayat', function () {
     return view('detailriwayat');
 })->name('detailriwayat');
@@ -69,18 +53,8 @@ Route::get('/detaillowongan', function () {
     return view('detaillowongan');
 })->name('detaillowongan');
 
-<<<<<<< HEAD
-Route::get('/profileperusahaan', function () {
-    return view('profileperusahaan');
-})->name('profileperusahaan');
-
-Route::get('/carilowongan', function () {
-    return view('carilowongan');
-})->name('carilowongan');
-=======
 Route::get('/profileperusahaan/{id}', [profileController::class, "detail_perusahaan"]);
 
->>>>>>> origin/Manda
 
 //tambahan dr lala
 Route::get('/company/create', [jobController::class, "createJob_view"]);
@@ -88,33 +62,69 @@ Route::get('/home', [jobController::class, "index"]);
 Route::post('/add/store', [jobController::class, "createJob_store"]);
 Route::get('/detailLowongan', [jobController::class, "job_detail"]);
 Route::get('/view/detail/{id}', [jobController::class, "viewPage_detailApply"]);
-<<<<<<< HEAD
-=======
 Route::get('/view/detail/{id}', [jobController::class, "viewPage_detailApply"]);
->>>>>>> origin/Manda
 Route::post('/detail/Lowongan/applyPage/{id}', [applyController::class, "showApplyPage"]);
 Route::post('/apply/job/', [applyController::class, "apply_store"]);
-
+//hapusJob
+Route::get('/hapusJob/{id}', [jobController::class, "destroy"]);
 //history
-<<<<<<< HEAD
-Route::get('/riwayatlamaran/{id}', [applyController::class, "historyPage"]);
-Route::get('/detailriwayat/{id}', [applyController::class, "detailHistory"]);
-=======
 Route::get('/riwayatlamaran', [applyController::class, "historyPage"]);
 Route::get('/detailriwayat/{id}', [applyController::class, "detailHistory"]);
 
-//admin
-Route::get('/admin/pantauUser', function () {
-    return view('/admin/pantauUser');
-})->name('/admin/pantauUser');
 
 //tampil list user
-Route::get('/admin/pantauUser', [adminController::class, "listUser"]);
-//edit user
-Route::get('/admin/{id}/editUser', [adminController::class, "editUser"]);
-Route::post('/updateUser/{id}', [adminController::class, "updateUser"]);
+Route::get('/listUser', [adminController::class, "listPelamar"]);
+Route::get('/listPerusahaan', [adminController::class, "listPerusahaan"]);
+//lihat profile user
+Route::get('/admin/{id}/lihatProfile', [adminController::class, "view_profile"]);
+
 //hapus user
-Route::get('/admin/{id}/delete_akun', [adminController::class, "delete_akun"]);
+Route::get('/{id}/delete_pelamar', [adminController::class, "delete_akun_pelamar"]);
+Route::get('/{id}/delete_perusahaan', [adminController::class, "delete_akun_perusahaan"]);
 //search
 Route::get('/carilowongan', [jobController::class, "listSearch"])->name('carilowongan');
->>>>>>> origin/Manda
+
+// Route::get('/listUser', function () {
+//     return view('/admin/listUser');
+// })->name('/admin/listUser');
+
+Route::get('/artikel', function () {
+    return view('/admin/artikel');
+})->name('/admin/artikel');
+
+Route::get('/tambahartikel', function () {
+    return view('/admin/tambahartikel');
+})->name('/admin/tambahartikel');
+
+Route::get('/dashboard', function () {
+    return view('/admin/dashboard');
+})->name('/admin/dashboard');
+
+Route::get('/tentang', function () {
+    return view('/tentang');
+})->name('/tentang');
+
+//daftar pelamar
+Route::get('/melihatListPelamar', [jobController::class, "listPelamar"]);
+
+// Route::get('/melihatListPelamar', function () {
+//     return view('/melihatListPelamar');
+// })->name('/melihatListPelamar');
+
+// Route::get('/dashboard', function () {
+//     return view('/admin/dashboard');
+// })->name('/admin/dashboard');
+
+// Route::get('/listPerusahaan', function () {
+//     return view('/admin/listPerusahaan');
+// })->name('/admin/listPerusahaan');
+
+Route::get('/afternew', function () {
+    return view('/layout/afternew');
+})->name('/layout/afternew');
+
+//artikel
+Route::get('/tambahArtikel', [artikelController::class, "article_view"]);
+Route::post('/add/store/artikel', [artikelController::class, "make_article"]);
+Route::get('/artikel', [artikelController::class, "tampilArtikel"])->name('artikel');
+Route::get('/delete/artikel/{id}', [artikelController::class, "destroy"]);

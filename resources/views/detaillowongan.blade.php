@@ -28,7 +28,7 @@
 
 <form action="/detail/Lowongan/applyPage/{{ $apply_job->id }}" method="POST">
     @csrf
-    <div class="container my-5">
+    <div class="container mt-5">
         <div class="row mb-3">
             <div class="col-2">
                 <img src="/foto/{{$apply_job->foto}}" width="150px">
@@ -42,7 +42,6 @@
                 
             </div>
             <div class="col-3 my-1 fw-light text-secondary d-block">
-
                 {{ $apply_job->location }}
             </div>
             <div class="col">
@@ -59,7 +58,6 @@
                 </div>
                 <div class="col text-secondary">
                     <p class="fw-light d-inline">Berakhir pada</p>
-
                     <b class="fw-bolder">{{ $apply_job->end_date }}</b>
                 </div>
             </div>
@@ -78,17 +76,15 @@
                 @endif
             </div>
         </div>
-
         <div class="row">
             <hr>
-            <div class="col mb-3">
+            <div class="col">
                 <h5 class="fw-bold mt-2 mb-4">Rincian Pekerjaan:</h5>
                 <ul class="text-secondary fw-lighter">
                     {!! $apply_job->detail !!}
                 </ul>
             </div>
         </div>
-
         <div class="row">
             <hr>
             <div class="col">
@@ -98,7 +94,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="row">
             <div class="col mb-3">
                 <h5 class="fw-bold mt-3 mb-4">Kualifikasi Khusus:</h5>
@@ -107,65 +102,75 @@
                 </ul>
             </div>
         </div>
+    </div>
 </form>
 
-<div class="row">
-    <hr>
-    <div class="col">
-        <h5 class="fw-bold mt-3 mb-4">Lowongan Kerja Lainnya</h5>
-        @if ($total_lowongan <= 1)
-        @else
-            @foreach ($lowongan_lain as $lainnya)
-                @foreach ( $profile_company as $profile )
-                    @if ($profile->id == $lainnya->user_id)
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col col-lg-2">
-                                            <img src="/foto/{{$lainnya->foto}}" alt="logo-telkom-indonesia"
-                                                width="150">
-                                        </div>
-                                        <div class="col col-lg-6">
-                                            <div class="row my-2 fw-bold fs-5">
-                                                {{ $lainnya->name }}
+<div class="container mb-3">
+    <div class="row">
+        <hr>
+        <div class="col">
+            <h5 class="fw-bold mt-3 mb-5">Lowongan Kerja Lainnya</h5>
+            @if ($total_lowongan <= 1)
+            @else
+                @foreach ($lowongan_lain as $lainnya)
+                    @foreach ( $profile_company as $profile )
+                        @if ($profile->id == $lainnya->user_id)
+                        <div class="container mx-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-lg-2">
+                                                <img src="/foto/{{$lainnya->foto}}" alt="logo-telkom-indonesia"
+                                                    width="150">
                                             </div>
-                                            <div class="row fw-light text-secondary">
-                                                {{ $profile->name }}
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="row my-2 fw-bold">
-                                                <div class="col-12">
-                                                    <i class="fa-solid fa-location-pin"></i>
-                                                    {{ $lainnya->location }}
+                                            <div class="col col-lg-6">
+                                                <div class="row my-2 fw-bold fs-5">
+                                                    {{ $lainnya->name }}
+                                                </div>
+                                                <div class="row fw-light text-secondary">
+                                                    {{ $profile->name }}
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col text-secondary fw-light ms-3">
-                                                    {{ $lainnya->created_at->diffForHumans() }}
+                                            <div class="col">
+                                                <div class="row my-2 fw-bold">
+                                                    <div class="col-12">
+                                                        <i class="fa-solid fa-location-pin"></i>
+                                                        {{ $lainnya->location }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col text-secondary fw-light ms-3">
+                                                        {{ $lainnya->created_at->diffForHumans() }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card-text mx-3 mt-4">
+                                                    {!! $lainnya->detail !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mx-3 mb-2">
+                                                    <a href="/view/detail/{{ $lainnya->id }}" class="text-reset">Selengkapnya</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    {!! $lainnya->detail !!}
-                                </div>
-                                <div class="mx-4">
-                                    <a href="/view/detail/{{ $lainnya->id }}" class="text-reset">Selengkapnya</a>
-                                </div>
-                            </div>
                         </div>
-                    @endif
+                        @endif
+                    @endforeach
                 @endforeach
-            @endforeach
-        @endif
+            @endif
+        </div>
     </div>
 </div>
-
 
 @include('layout.footer')
 @endsection

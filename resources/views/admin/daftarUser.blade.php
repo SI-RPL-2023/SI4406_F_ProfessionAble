@@ -26,7 +26,7 @@
 
     <div class="d-flex">
         <div class="d-flex flex-column flex-shrink-0 p-3"
-            style="width: 250px; min-height: 100vh; background-color: #eb5a16bd;">
+            style="width: 250px; min-height: 100vh; background-color: #eb5a16bd;" data-aos="fade-right">
             <div class="text-center">
                 <a href="/home" class="mb-3 mb-md-0 me-md-auto">
                     <img src="LogoApp.png" alt="LogoApp" width="150px" height="100px">
@@ -69,7 +69,7 @@
                 </li>
             </ul>
         </div>
-        <div class="container mx-5 mt-5 mb-2">
+        <div class="container mx-5 mt-5 mb-2" data-aos="fade-down">
             <div class="row text-secondary">
                 <div class="col">
                     <span class="px-2"><i class="fa-solid fa-users"></i></span>
