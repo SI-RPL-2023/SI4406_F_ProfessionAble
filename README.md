@@ -7,7 +7,7 @@
 
 Repository ini dibuat bertujuan untuk memenuhi tugas besar mata kuliah Rekayasa Perangkat Lunak tahun 2023
 
-# Tentang Bidji Course
+# Tentang ProfessionAble
 
 website ProfessionAble ini adalah untuk merancang dan membuat bahan informasi lowongan kerja bagi penyandang disabilitas di Kabupaten Bandung berbasis web sebagai alat pengolah informasi penyedia lapangan kerja dan merupakan alat untuk membantu penyandang disabilitas mendapatkan informasi lowongan kerja.
 
