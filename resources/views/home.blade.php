@@ -89,39 +89,38 @@
                         <h4 class="title mb-4">Lowongan Terbaru</h4>
                     </div>
                 </div>
-                <!--end col-->
-
                 <div class="col-md-4 mt-4 mt-sm-0 d-none d-md-block">
                     <div class=" text-md-end">
                         <a href="" class="text-dark" style="text-decoration: none">Lainnya</a>
                     </div>
                 </div>
-                <!--end col-->
             </div>
-            <!--end row-->
             <div class="row">
                 @foreach ($list as $key => $value)
                     <div class="col-md-3 col-sm-6 item">
                         <div class="card item-card card-block">
-                            <p class="card-title text-end mx-3 mt-3 text-muted">{{ $value->created_at->diffForHumans() }}</p>
+                            <p class="card-title text-end mx-3 mt-3 text-muted">{{ $value->created_at->diffForHumans() }}
+                            </p>
                             <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
                             <h5 class="item-card-title mt-3 mx-3 ">{{ $value->name }}</h5>
-                            <span class="text-muted d-block mx-3"><i class="fa fa-map-marker"
-                                    aria-hidden="true"></i>{{ $value->location }}</span>
+                            <div class="col-12 mx-3">
+                                    <i class="fa-solid fa-location-pin text-muted"></i>
+                                    {{ $value->location }}
+                            </div>
                             <p class="mx-3">
-                                <?php  
-                                    
-                                    $rincian_detail = $value["detail"];
-                                    if (strlen($rincian_detail) > 10) {
-                                        $rincian_detail = Str::substr($rincian_detail, 0, 30) . '...';
-                                        echo $rincian_detail;
-                                    };
+                                <?php
+                                
+                                $rincian_detail = $value['detail'];
+                                if (strlen($rincian_detail) > 10) {
+                                    $rincian_detail = Str::substr($rincian_detail, 0, 30) . '...';
+                                    echo $rincian_detail;
+                                }
                                 ?>
                             </p>
-                                <div class="mt-3 text-end">
-                                    <a href="/view/detail/{{ $value->id }}"
-                                        class="btn  mx-3 btn-sm float-right mb-2 ">View Details</a>
-                                </div>
+                            <div class="mt-3 text-end">
+                                <a href="/view/detail/{{ $value->id }}" class="btn mx-3 btn-sm float-right mb-2 ">View
+                                    Details</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -129,32 +128,45 @@
         </div>
 
         <div class="container mt-5 mb-5">
-
             <div class="row align-items-start mb-4 pb-2">
                 <div class="col-md-8">
                     <div class="section-title text-md-start">
                         <h4 class="title mb-2">Artikel</h4>
                     </div>
                 </div>
-                <!--end col-->
-
                 <div class="col-md-4 mt-4 mt-sm-0 d-none d-md-block">
                     <div class=" text-md-end">
                         <a href="" class="text-dark" style="text-decoration: none">Lainnya</a>
                     </div>
                 </div>
-                <!--end col-->
             </div>
-            <!--end row-->
-
             <div class="row">
-                <div class="col-md-3 col-sm-6 item">
-                    <div class="card item-card card-block">
-                        <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
-                        <h3 class="item-card-title mt-3 mx-3" style="background-color= #ff6f2d;">3 hal penting dalam
-                            melamar kerja</h3>
+                @foreach ($list_artikel as $artikel)
+                    <div class="col-md-3 col-sm-6 item">
+                        <div class="card item-card card-block">
+                            <p class="card-title text-end mx-3 mt-3 text-muted">{{ $artikel->created_at->diffForHumans() }}
+                            </p>
+                            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="logo">
+                            <h3 class="item-card-title mt-3 mx-3" style="background-color= #ff6f2d;">{{ $artikel->title }}
+                            </h3>
+                            <span class="text-muted d-block mx-3"><i 
+                                    aria-hidden="true"></i>{{ $artikel->author }}</span>
+                            <br>
+                            <p class="mx-3">
+                                <?php
+                                    $isi_artikel = $artikel['isi'];
+                                    $teks_tanpa_html = strip_tags($isi_artikel);
+                                    $kata = explode(' ', $teks_tanpa_html);
+                                    $lima_kata_awal = implode(' ', array_slice($kata, 0, 5));
+                                    echo $lima_kata_awal . '...';
+                                ?>
+                            </p>
+                            <div class="mt-3 text-end">
+                                <a href=""></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
