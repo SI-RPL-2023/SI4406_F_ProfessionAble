@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Apply extends Model
 {
     use HasFactory;
-    protected $table = "apply";
+    protected $table = 'apply';
     protected $guarded = [];
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id");
+    }
 }
